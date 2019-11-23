@@ -1,0 +1,31 @@
+﻿@{
+    ViewData["Title"] = "Apply With LinkedIn Button";
+}
+
+<h2>Apply with LinkedIn</h2>
+
+<div name="widget-holder">
+
+    <script type="text/javascript" src="https://www.linkedin.com/mjobs/awli/awliWidget"></script>
+
+    @*the value here is retrieved from the customer configuration widget when they click to enable the feature*@
+    @* URL to test the integration status of the customer, note that we need to use the customer's key to get the access token to use this endpoint *@
+    @*https://api.linkedin.com/v2/atsIntegrations?ids[0].integrationContext=urn:li:organization:{ORGANIZATION NUMBER GOES HERE}&ids[0].integrationType=APPLY_WITH_LINKEDIN&ids[0].tenantType=JOBS&ids[0].dataProvider=ATS*@
+
+    <script type="IN/AwliWidget"
+            data-company-job-code="Your job application unique code"
+            data-integration-context="urn:li:organization:ORGANIZATION NUMBER GOES HERE"
+            data-mode="BUTTON_DATA"
+            data-callback-method="onProfileData"
+            data-api-key="your api keys"
+            data-allow-sign-in="true">
+    </script>
+
+    <script>
+        function onProfileData(profileData) {
+            console.log('Profile Data', profileData);
+
+        }
+    </script>
+
+</div>

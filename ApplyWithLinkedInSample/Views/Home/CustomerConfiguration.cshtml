@@ -1,0 +1,32 @@
+﻿@{
+    ViewData["Title"] = "Customer Configuration Plugin";
+}
+
+<br />
+<br />
+
+<div class="row">
+    <script type="text/javascript" src="https://platform.linkedin.com/xdoor/scripts/in.js">
+        api_key: { your client api key , remove the curly brace}
+        extensions: ATSIntegrationWidget@http://www.linkedin.com/recruiter/widget/ATSIntegration
+    </script>
+
+    <script type="IN/ATSIntegrationWidget"
+            data-supported-bundled-integration-types="APPLY_WITH_LINKEDIN"
+            data-onintegrate="handleIntegrations"
+            data-width="800px">
+    </script>
+
+    <script>
+        function handleIntegrations(integrations) {
+            /* After clicking Request, this function is called and we receive this object which is going to be used to show the linkin button on our page
+             Note: the configuration will not load if we do not specify the validJsSdkDomains
+               integrationContext: "urn:li:organization:your organization number"
+               integrationType: "APPLY_WITH_LINKEDIN"
+               tenantType: "JOBS"
+             */
+
+            console.log('integrations', integrations);
+        }
+    </script>
+</div>
